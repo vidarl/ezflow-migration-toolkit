@@ -1,0 +1,18 @@
+{{ '{%' }} spaceless {{ '%}' }}
+    {{ '{%' }} set render_empty = render_empty|default(false) {{ '%}' }}
+
+    <div class="schedule-layout schedule-layout-Legacy{{ type }} schedule-layout--{{ view }}" data-studio-slots-container>
+        {{ '{%' }} for i in 0..{{ count }} {{ '%}' }}
+            {{ '{%' }} if items[i] is defined or render_empty {{ '%}' }}
+                <div class="schedule-layout--{{ view }}__slot schedule-layout__slot" data-studio-slot>
+                    {{ '{%' }} if items[i] is defined {{ '%}' }}
+                        {{ '{{' }} render(controller('ez_content:viewLocation', {
+                            'locationId': items[i],
+                            'viewType': 'grid-list'
+                        })) {{ '}}' }}
+                    {{ '{%' }} endif {{ '%}' }}
+                </div>
+            {{ '{%' }} endif {{ '%}' }}
+        {{ '{%' }} endfor {{ '%}' }}
+    </div>
+{{ '{%' }} endspaceless {{ '%}' }}

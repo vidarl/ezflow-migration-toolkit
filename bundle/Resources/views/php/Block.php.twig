@@ -1,0 +1,61 @@
+<?php
+/**
+ * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
+namespace MigrationBundle\LandingPage\Block;
+
+use EzSystems\LandingPageFieldTypeBundle\Exception\InvalidBlockAttributeException;
+use EzSystems\LandingPageFieldTypeBundle\FieldType\LandingPage\Definition\BlockDefinition;
+use EzSystems\LandingPageFieldTypeBundle\FieldType\LandingPage\Definition\BlockAttributeDefinition;
+use EzSystems\LandingPageFieldTypeBundle\FieldType\LandingPage\Model\AbstractBlockType;
+use EzSystems\LandingPageFieldTypeBundle\FieldType\LandingPage\Model\BlockType;
+use EzSystems\LandingPageFieldTypeBundle\FieldType\LandingPage\Model\BlockValue;
+
+/**
+ * Legacy{{ type }} block
+ */
+class Legacy{{ type }}Block extends AbstractBlockType implements BlockType
+{
+    /**
+     * {@inheritdoc}
+     */
+    public function getTemplateParameters(BlockValue $blockValue)
+    {
+        // Implement block logic here
+
+        return ['block' => $blockValue];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function createBlockDefinition()
+    {
+        return new BlockDefinition(
+            'legacy_{{ type|lower }}',
+            'Legacy{{ type }}',
+            'default',
+            'bundles/ezsystemslandingpagefieldtype/images/thumbnails/tag.svg',
+            [],
+            [
+{% for key,value in attributes %}
+                new BlockAttributeDefinition(
+                    '{{ value }}',
+                    '{{ value|capitalize }}',
+                    'text',
+                    '/[^\\s]/',
+                    '{{ value|capitalize }} placeholder'
+                ),
+{% endfor %}
+            ]
+        );
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function checkAttributesStructure(array $attributes)
+    {
+    }
+}

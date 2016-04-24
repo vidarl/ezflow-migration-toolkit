@@ -1,0 +1,19 @@
+{% set i = 0 %}
+<div class="row" data-studio-zones-container>
+{% for index,zone in zones %}
+    <div class="landing-page__zone landing-page__zone--{{ '{{' }} zones[{{ i }}].id {{ '}}' }} landing-page__zone--{{ zone.name }} col-xs-9" data-studio-zone="{{ '{{' }} zones[{{ i }}].id {{ '}}' }}">
+        {{ '{%' }} if zones[{{ i }}].blocks {{ '%}' }}
+            {{ '{%' }} for block in zones[{{ i }}].blocks {{ '%}' }}
+                <div class="landing-page__block block_{{ '{{' }} block.type {{ '}}' }}">
+                    {{ '{{' }} render_esi(controller('ez_block:renderBlockAction', {
+                        'contentId': contentInfo.id,
+                        'blockId': block.id,
+                        'versionNo': versionInfo.versionNo
+                    })) {{ '}}' }}
+                </div>
+            {{ '{%' }} endfor {{ '%}' }}
+        {{ '{%' }} endif {{ '%}' }}
+    </div>
+{% set i = i + 1 %}
+{% endfor %}
+</div>
