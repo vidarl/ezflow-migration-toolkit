@@ -9,5 +9,5 @@ For help text: `app/console ezflow:migrate --help`
 # Todo: Migration to v2
 
 This packge does not yet allow migration to 2.x (Page builder) directly, to do that you'll need to migrate in two stages:
-1. From eZ Flow to 1.13LTS _(Landig Pages)_, using this package.
-2. From 1.13LTS to 2.5LTS _(Page builder)_ using [ezsystems/ezplatform-page-migration](https://github.com/ezsystems/ezplatform-page-migration) package.
+1. From eZ Flow to 1.7LTS _(Landing Pages)_, using this package.
+2. From 1.7LTS to 2.5LTS _(Page builder)_ using [ezsystems/ezplatform-page-migration](https://github.com/ezsystems/ezplatform-page-migration) package.
