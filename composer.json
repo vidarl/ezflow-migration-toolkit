@@ -18,7 +18,8 @@
     }
   },
   "require": {
-    "ezsystems/ezpublish-kernel": "^7.5"
+    "ezsystems/ezpublish-kernel": "^7.5",
+    "vidarl/landing-page-fieldtype-bundle": "dev-master"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.7.0"
