@@ -170,6 +170,7 @@ class Page
                 }
 
                 $studioBlock->setName($block->getName());
+                $studioBlock->setTtl($block->getTtl());
 
                 if (!isset($configuration['blocks'][$studioBlock->getType()])) {
                     $configuration['blocks'][$studioBlock->getType()] = [
